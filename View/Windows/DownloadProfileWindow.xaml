@@ -1,0 +1,75 @@
+﻿<Window x:Class="V2Grupp.View.Windows.DownloadProfileWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:V2Grupp.View.Windows"
+        xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
+        xmlns:viewmodel="clr-namespace:V2Grupp.ViewModel"
+        d:DataContext="{d:DesignInstance Type=viewmodel:DownloadProfileWindow_VM}"
+        mc:Ignorable="d"
+        Title="{Binding Title}"
+        Icon="{Binding LogoIcon}"
+        Height="400" Width="600"
+        MinHeight="300" MinWidth="300"
+        Tag="{Binding SelectedArea}"
+        Name="DownloadProfileWin">
+    <Grid>
+        <DockPanel LastChildFill="True">
+            <DockPanel DockPanel.Dock="Bottom"
+                       HorizontalAlignment="Stretch">
+                <Button Style="{StaticResource PrettyImgBtn}"
+                        Width="50" 
+                        Height="50"
+                        Margin="10"
+                        DockPanel.Dock="Left" 
+                        HorizontalAlignment="Left"
+                        Command="{Binding DeleteCmd}">
+                    <Button.Background>
+                        <ImageBrush ImageSource="/Image/delete.ico" Stretch="Uniform"/>
+                    </Button.Background>
+                </Button>
+                <Button Style="{StaticResource PrettyImgBtn}"
+                        Width="50" 
+                        Height="50"
+                        Margin="10"
+                        DockPanel.Dock="Right" 
+                        HorizontalAlignment="Right"
+                        Command="{Binding SaveCmd}"
+                        CommandParameter="{x:Reference DownloadProfileWin}">
+                    <Button.Background>
+                        <ImageBrush ImageSource="/Image/approve.ico" Stretch="Uniform"/>
+                    </Button.Background>
+                </Button>
+            </DockPanel>
+            <DataGrid Name="MainDataGrid"
+                      ItemsSource="{Binding AllAreas}"
+                      SelectedItem="{Binding SelectedArea,Mode=TwoWay}"
+                      CanUserAddRows="False" 
+                      CanUserDeleteRows="False"
+                      IsReadOnly="True"
+                      SelectionMode="Single"
+                      GridLinesVisibility="All" 
+                      AutoGenerateColumns="False" 
+                      ScrollViewer.CanContentScroll="False">
+                <DataGrid.Columns>
+                    <DataGridTextColumn Header="ID" 
+                                    Binding="{Binding Id}" 
+                                    MinWidth="30"/>
+                    <DataGridTextColumn Header="Описание" 
+                                    Binding="{Binding Description}" 
+                                    MinWidth="80" />
+                    <DataGridTextColumn Header="Кол-во координат" 
+                                    Binding="{Binding Coordinates.Count}" 
+                                    MinWidth="50"/>
+                    <DataGridTextColumn Header="Последнее изменение" 
+                                    Binding="{Binding LastCh, StringFormat={}dd.MM.yyyy HH:mm:ss}"
+                                    MinWidth="70"/>
+                    <DataGridCheckBoxColumn Header="Заливка фигуры" 
+                                            Binding="{Binding FillPoly}"
+                                            MinWidth="55"/>
+                </DataGrid.Columns>
+            </DataGrid>
+        </DockPanel>
+    </Grid>
+</Window>

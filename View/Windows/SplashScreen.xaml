@@ -1,0 +1,26 @@
+﻿<Window x:Class="V2Grupp.View.Windows.SplashScreen"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:V2Grupp.View.Windows"
+        mc:Ignorable="d"
+        Title="SplashScreen" 
+        Height="200" Width="400"
+        WindowStyle="None"
+        ResizeMode="NoResize"
+        ShowInTaskbar="False"
+        AllowsTransparency="True"
+        Background="Transparent"
+        WindowStartupLocation="CenterScreen">
+    <Grid>
+        <Border CornerRadius="10"
+                Background="#FFDCF5E4">
+            <Image Source="/Image/v2-grupp_logo_2021.png" 
+                   Stretch="Uniform"
+                   HorizontalAlignment="Center"
+                   VerticalAlignment="Center" 
+                   Margin="10,0,10,0"/>
+        </Border>
+    </Grid>
+</Window>
